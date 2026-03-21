@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-commit-translator"
+version = "1.0.0"
+description = "📝 AI Commit Translator — 中文需求自动生成英文 Git Commit Message"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "AI Assistant", email = "ai@example.com"}
+]
+keywords = ["git", "commit", "ai", "translator", "conventional-commits"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "openai>=1.0.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.18.0"]
+ollama = ["httpx>=0.25.0"]
+dev = ["pytest>=8.0.0", "pytest-cov>=4.0.0", "black>=23.0.0", "ruff>=0.1.0"]
+
+[project.scripts]
+ai-commit = "cli.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src/*", "cli/*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
