@@ -1,29 +1,21 @@
-.PHONY: install test lint clean build publish
+.PHONY: install test lint format clean
 
 install:
-	pip install -e ".[dev]"
+	pip install -e .
 
 test:
 	pytest tests/ -v --cov=src
 
 lint:
-	ruff check src/ cli/ tests/
-	black --check src/ cli/ tests/
+	ruff check src/
+	black --check src/
+	mypy src/
 
 format:
-	black src/ cli/ tests/
-	ruff check --fix src/ cli/ tests/
+	black src/
+	ruff check --fix src/
 
 clean:
-	rm -rf build/ dist/ *.egg-info/
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete
-
-build:
-	python -m build
-
-publish: build
-	python -m twine upload dist/*
-
-run:
-	ai-commit translate "新增用户登录功能"
+	rm -rf build/ dist/ *.egg-info/

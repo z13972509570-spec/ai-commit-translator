@@ -1,3 +1,7 @@
+[![CI](https://github.com/z13972509570-spec/ai-commit-translator/actions/workflows/ci.yml/badge.svg)](https://github.com/z13972509570-spec/ai-commit-translator/actions)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
+
 # 📝 AI Commit Translator
 
 > 输入中文需求描述，自动生成规范的英文 Git commit message（基于 Conventional Commits 标准）
@@ -118,3 +122,6 @@ ai-commit uninstall-hook
 ## 📦 License
 
 MIT © 2026
+
+---
+版本: 1.0.0 | 许可证: MIT | 维护者: @z13972509570-spec
